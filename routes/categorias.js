@@ -16,7 +16,7 @@ router.post('/', auth, async (req, res) => {
 });
 
 // Obtener todas las categorías
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const categorias = await Categoria.find();
     res.json(categorias);

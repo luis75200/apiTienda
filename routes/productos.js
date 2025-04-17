@@ -21,7 +21,7 @@ router.post('/', auth, async (req, res) => {
 });
 
 // Obtener todos los productos (con nombre de categoría)
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const productos = await Producto.find().populate('categoria', 'nombre');
     res.json(productos);
@@ -31,7 +31,7 @@ router.get('/', auth, async (req, res) => {
 });
 
 // Obtener un producto por ID
-router.get('/:id', auth, async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const producto = await Producto.findById(req.params.id).populate('categoria', 'nombre');
     if (!producto) return res.status(404).json({ error: 'Producto no encontrado' });

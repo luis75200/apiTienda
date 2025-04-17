@@ -5,7 +5,7 @@ const Producto = require('../models/Producto');
 const auth = require('../middleware/auth');
 
 // Crear venta
-router.post('/', auth, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { productos } = req.body;
 
