@@ -6,13 +6,13 @@ const auth = require('../middleware/auth');
 // Crear producto
 router.post('/', auth, async (req, res) => {
   try {
-    const { nombre, descripcion, precio, stock, categoria } = req.body;
+    const { nombre, descripcion, precio, stock, imagenes, categoria } = req.body;
 
     // Verificar que la categoría exista
     const cat = await Categoria.findById(categoria);
     if (!cat) return res.status(400).json({ error: 'Categoría no válida' });
 
-    const nuevoProducto = new Producto({ nombre, descripcion, precio, stock, categoria });
+    const nuevoProducto = new Producto({ nombre, descripcion, precio, stock, imagenes, categoria });
     await nuevoProducto.save();
     res.status(201).json(nuevoProducto);
   } catch (err) {
